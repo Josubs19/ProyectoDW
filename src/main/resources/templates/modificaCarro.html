@@ -1,0 +1,28 @@
+!DOCTYPE html>
+
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <title>Modifica carros</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Datos del carro</h1>
+        <a th:href="@{/}">Regresar</a>
+        <hr>
+        <form th:action="@{/carro/guardar}" method="post" th:object="${carro}">
+            
+            <input type="hidden" name="idCarro" th:field="*{idCarro}"
+            
+            <label>Nombre</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <label>Categoria</label>
+            <input type="text" name="categoria" th:field="*{categoria}"/>
+            <label>Precio</label>
+            <input type="number" name="precio" th:field="*{precio}"/>
+            <br>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+
+        
+    </body>
+</html>
