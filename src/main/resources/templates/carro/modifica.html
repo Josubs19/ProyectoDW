@@ -1,7 +1,8 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 
-<html xmlns:th="http://thymeleaf.org">
-    <head>
+<html xlmns="hhtp://w3.org/1999/xhtml"
+    xmlns:th="http://thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
         <title>Modifica carros</title>
         <meta charset="UTF-8">
     </head>
@@ -21,8 +22,6 @@
             <input type="number" name="precio" th:field="*{precio}"/>
             <br>
             <input type="submit" name="guardar" value="Guardar"/>
-        </form>
-
-        
+        </form>   
     </body>
 </html>
