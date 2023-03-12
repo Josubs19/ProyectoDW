@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xlmns="hhtp://w3.org/1999/xhtml"
+    xmlns:th="http://thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Modifica direccion</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1 class= "p-2" style="background-color: maroon;">Datos de las direcciones</h1>
+        <a th:href="@{/}" class="btn btn-danger ">Regresar</a>
+        <hr>
+        <form th:action="@{/direccion/guardar}" method="post" th:object="${direccion}">
+            
+            <input type="hidden" name="idDireccion" th:field="*{idDireccion}"
+            
+            <label>Provincia</label>
+            <input class="form-control" type="text" name="provincia" th:field="*{provincia}"/>
+            
+            <label>Canton</label>
+            <input class="form-control" type="text" name="canton" th:field="*{canton}"/>
+            
+            <label>Calle 1</label>
+            <input class="form-control" type="text" name="calle1" th:field="*{calle1}"/>
+            
+            <label>Calle 2</label>
+            <input class="form-control" type="text" name="calle2" th:field="*{calle2}"/>
+
+            <br>
+            <button type="submit" class="btn btn-success" value="Guardar">Guardar</button>
+            
+            <div class="fixed-bottom"><footer th:replace="~{layout/plantilla :: footer}"/>
+        </div>
+        </form>   
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xlmns="hhtp://w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Crud Direccion</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+        <section> 
+            <h1>Listado de Direcciones</h1>
+            <hr>
+            <a th:href="@{nuevo}" class="btn btn-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-signpost-split" viewBox="0 0 16 16">
+                <path d="M7 7V1.414a1 1 0 0 1 2 0V2h5a1 1 0 0 1 .8.4l.975 1.3a.5.5 0 0 1 0 .6L14.8 5.6a1 1 0 0 1-.8.4H9v10H7v-5H2a1 1 0 0 1-.8-.4L.225 9.3a.5.5 0 0 1 0-.6L1.2 7.4A1 1 0 0 1 2 7h5zm1 3V8H2l-.75 1L2 10h6zm0-5h6l.75-1L14 3H8v2z"/>
+                </svg>
+                Nueva Direccion
+            </a>
+            <div th:if="${direccion != null and !direccion.empty}">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Provincia</th>
+                            <th>Canton</th>
+                            <th>Calle 1</th>
+                            <th>Calle 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="direccion : ${direccion}">
+                            <td>[[${direccion.provincia}]]</td>
+                            <td>[[${direccion.canton}]]</td>
+                            <td>[[${direccion.calle1}]]</td>
+                            <td>[[${direccion.calle2}]]</td>
+                            <td><a th:href="@{eliminar/} + ${direccion.idDireccion}" class="btn btn-danger "><i class="fas fa-trash"></i>Eliminar</a> 
+                                <a th:href="@{modificar/} + ${direccion.idDireccion}" class="btn btn-primary"><i class="fas fa-pencil"></i>Modificar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div th:if="${direccion == null or direccion.empty}">
+                <h3>No hay direcciones que mostrar...</h3>
+            </div>
+        </section>
+
+       <div class="fixed-bottom"><footer th:replace="~{layout/plantilla :: footer}"/>
+        </div>
+        
+
+    </body>
+</html>

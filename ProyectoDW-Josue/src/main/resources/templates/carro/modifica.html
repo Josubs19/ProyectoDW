@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xlmns="hhtp://w3.org/1999/xhtml"
+    xmlns:th="http://thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Modifica carros</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1 class= "p-2" style="background-color: maroon;">Datos del carro</h1>
+        
+        <a th:href="@{/}" class="btn btn-danger ">Regresar</a>
+        <hr>
+        <form th:action="@{/carro/guardar}" method="post" th:object="${carro}">
+            
+            <input type="hidden" name="idCarro" th:field="*{idCarro}">
+            
+            <label>Nombre</label>
+            <input  class="form-control" type="text" name="nombre" th:field="*{nombre}"/>
+            
+            <label>Categoria</label>
+            <input class="form-control" type="text" name="categoria" th:field="*{categoria}"/>
+            
+            <label>Precio</label>
+            <input class="form-control" type="number" name="precio" th:field="*{precio}"/>
+            <br>
+     
+            <button type="submit" class="btn btn-success" value="Guardar">Guardar</button>
+        </form>   
+        <div class="fixed-bottom"><footer th:replace="~{layout/plantilla :: footer}"/>
+        </div>
+    </body>
+</html>
