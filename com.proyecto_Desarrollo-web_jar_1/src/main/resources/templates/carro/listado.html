@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html xlmns="hhtp://w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Crud Carros</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+        <section> 
+            <h1>Listado de Carros</h1>
+            <hr>
+            <a th:href="@{nuevo}" class="btn btn-success">
+                <i class="fas fa-user-plus"></i> 
+                Nuevo Carro
+            </a>
+            <div th:if="${carro != null and !carro.empty}">
+                <table border="0">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Categoria</th>
+                            <th>Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="carro : ${carro}">
+                            <td>[[${carro.nombre}]]</td>
+                            <td>[[${carro.categoria}]]</td>
+                            <td>[[${carro.precio}]]</td>
+                            <td><a th:href="@{eliminar/} + ${carro.idCarro}" class="btn btn-danger "><i class="fas fa-trash"></i>Eliminar</a> 
+                                <a th:href="@{modificar/} + ${carro.idCarro}" class="btn btn-primary"><i class="fas fa-pencil"></i>Modificar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div th:if="${carro == null or carro.empty}">
+                <h3>No hay carros que mostrar...</h3>
+            </div>
+        </section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+    </body>
+</html>
